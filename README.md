@@ -2,4 +2,4 @@
 init Keepsake
 
 ## Status 
-- Active Development
+- Active Development - building UI, Button styling (animated hover btn), Background design
