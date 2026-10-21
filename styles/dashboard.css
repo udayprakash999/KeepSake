@@ -103,9 +103,16 @@ main.secondary {
   padding: 2rem 1rem;
 }
 .quote-wrapper h4 {
-  width: 80%;
+  width: 90%;
   font-size: 1.5rem;
   font-weight: 300;
+}
+.quote-wrapper h5{
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: right;
+  font-weight: 400;
+  font-style: italic;
 }
 .memories {
   width: 50%;
@@ -138,12 +145,30 @@ main.secondary {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1rem 2rem;
-  background: darkcyan;
   z-index: 100;
 }
-
-.input-modal img {
-  height: 360px;
-  width: auto;
-  object-fit: contain;
+.inputForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.form-component{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.form-component label{
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.form-component input{
+  padding: 0.5rem 0.25rem;
+  border: none;outline: none;
+  
+}
+form button{
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
 }

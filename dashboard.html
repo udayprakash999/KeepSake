@@ -8,10 +8,31 @@
   </head>
   <body>
     <div class="input-modal">
-      <form class="input" id="inputForm">
-        <!-- <input type="text" placeholder="Enter your data"> -->
-        <input type="file" id="inputImage" accept="image/*" />
-        <button type="submit">Submit</button>
+      <form class="inputForm" id="memoryForm">
+        <div class="form-component">
+          <label for="title">Add Title</label>
+          <input
+            type="text"
+            placeholder="The memory..."
+            id="title"
+            name="title"
+            required
+          />
+        </div>
+        <div class="form-component">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="form-component">
+          <label for="journal">Your thoughts...</label>
+          <textarea id="journal" name="journal" placeholder="journal" rows="5" required></textarea>
+          
+        </div>
+        <div class="form-component">
+          <label for="image">Image</label>
+          <input type="file" id="inputImage" name="image" accept="image/*" />
+        </div>
+        <button type="submit">Save Memory</button>
       </form>
     </div>
     <div class="dashboard-wrapper">
@@ -31,13 +52,8 @@
           <div class="welcome-text">
             <h2>Hello User</h2>
           </div>
-          <div class="quote-wrapper">
-            <h4>
-              Lorem picusm Lorem ipsum dolor sit, amet consectetur adipisicing
-              elit. Maiores neque eius quas repudiandae. Laboriosam ipsam cumque
-              quibusdam eligendi. Vero, voluptatem porro nisi id nobis ratione
-              iusto repellendus quod voluptatum exercitationem.
-            </h4>
+          <div class="quote-wrapper" id="quoteContainer">
+            <h4 id="quote"></h4>
           </div>
         </div>
         <div class="memories"></div>
