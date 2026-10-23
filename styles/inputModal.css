@@ -1,8 +1,10 @@
 /* Input Modal */
 .input-modal {
-  display: none;
-}
-.input-modal.active {
+  transform: scale(0);
+  overflow: hidden;
+  position: fixed;
+  top: -100%;
+  left: -100%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -11,12 +13,15 @@
   border: 1px solid var(--muted);
   box-shadow: 2px 2px 4px var(--muted);
   background: var(--background);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 1rem;
   padding: 1rem 2rem;
   z-index: 100;
+  transition: all 0.5s ease;
+}
+.input-modal.active {
+  transform: scale(1) translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 .inputForm {
   display: flex;

@@ -1,3 +1,12 @@
+const importBtn = document.getElementById("import");
+const main = document.querySelector("main");
+const reset = document.getElementById("reset");
+
+importBtn.addEventListener("click", () => {
+  inputModal.classList.toggle("active");
+  main.classList.toggle("secondary");
+});
+
 const memoryForm = document.getElementById("inputForm");
 const memoryContainer = document.getElementById("memoryContainer");
 
@@ -10,9 +19,12 @@ memoryForm.addEventListener("submit", (e) => {
     title: memoryData.get("title").trim(),
     date: memoryData.get("date"),
     journal: memoryData.get("memory"),
-    image: image.size > 0 ? image : null,
+    image: image instanceof File && image.size > 0 ? image : null,
   };
   saveData(entry);
+  memoryForm.reset();
+  getData();
+  inputModal.remove("active");
 });
 
 let keptData;
@@ -66,9 +78,14 @@ async function getData() {
 }
 
 function createMemoryCard(data) {
+  memoryContainer.innerHTML = "";
   data.forEach((memory) => {
     const memoryCard = document.createElement("div");
     memoryCard.classList.add("memory-card");
+
+    const memoryImage = document.createElement("img");
+    memoryImage.src = URL.createObjectURL(memory.image);
+    memoryImage.alt = memory.title;
 
     memoryCard.innerHTML = `
         <div class="memory-header">
@@ -77,9 +94,19 @@ function createMemoryCard(data) {
         <div class="memory-content">
         <h3>${memory.title}</h3>
         </div>
-        <div class="memory-footer">
-        </div>
     `;
+    memoryCard.appendChild(memoryImage);
     memoryContainer.appendChild(memoryCard);
   });
 }
+
+reset.addEventListener("click", () => {
+  const request = indexedDB.deleteDatabase("keptDB");
+  request.onsuccess = () => {
+    alert("Database Resetted");
+  };
+  request.onerror = () => {
+    alert("Error deleting database");
+  };
+  memoryContainer.innerHTML = "";
+});
