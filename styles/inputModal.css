@@ -1,0 +1,45 @@
+/* Input Modal */
+.input-modal {
+  display: none;
+}
+.input-modal.active {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 50%;
+  height: 80vh;
+  border: 1px solid var(--muted);
+  box-shadow: 2px 2px 4px var(--muted);
+  background: var(--background);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  z-index: 100;
+}
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.form-component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.form-component label {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.form-component input {
+  padding: 0.5rem 0.25rem;
+  border: none;
+  outline: none;
+}
+form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+}
