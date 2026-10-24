@@ -16,34 +16,53 @@
           <div class="mood" data-name="excited" id="moodexcited">excited</div>
         </div>
       </div>
+      <div class="memory-modal" id="memoryModal">
+        <div class="memoryModalHeader">
+          <button class="btn close-btn" id="closeMemory">X</button>
+        </div>
+        <div class="memoryModalMain"></div>
+      </div>
       <div class="input-modal" id="inputModal">
+        <div class="form-headeing">
+          <h3>New Memory</h3>
+          <p>Have a memory want to keep?</p>
+        </div>
         <form class="input-form" id="inputForm">
           <div class="form-div">
-            <div class="form-component">
+            <div class="form-component inputTitle">
               <label for="title">Memory Title</label>
               <input
                 type="text"
                 name="title"
+                required
                 placeholder="Enter Memory Title..."
               />
             </div>
-            <div class="form-component">
+            <div class="form-component inputDate">
               <label for="date">Date Recorded</label>
-              <input type="date" name="date" id="date" />
+              <input type="date" name="date" id="date" required />
             </div>
           </div>
           <div class="form-div">
             <div class="tags-wrapper">
-              <div class="tag">Happy</div>
-              <div class="tag">Angry</div>
-              <div class="tag">Sad</div>
-              <div class="tag">Excited</div>
+              <div class="tag inputTag" data-mood="happy">Happy</div>
+              <div class="tag inputTag" data-mood="angry">Angry</div>
+              <div class="tag inputTag" data-mood="sad">Sad</div>
+              <div class="tag inputTag" data-mood="excited">Excited</div>
             </div>
+            <input type="hidden" id="moodInput" name="moodInput" required />
           </div>
+
           <div class="form-div">
             <div class="form-component">
               <label for="memory">Your Thoughts</label>
-              <textarea name="memory" id="memoryInput" rows="5"></textarea>
+              <textarea
+                name="memory"
+                id="memoryInput"
+                rows="8"
+                placeholder="Thoughts about this memory..."
+                required
+              ></textarea>
             </div>
           </div>
           <div class="form-div">
@@ -53,6 +72,7 @@
                 type="file"
                 id="inputImage"
                 name="image"
+                required
                 accept="image/*"
               />
             </div>
@@ -63,7 +83,9 @@
       <div class="app">
         <header>
           <div class="header-heading">
-            <div id="logo" class="logo"><h1>KeepSake<span>.</span></h1></div>
+            <div id="logo" class="logo">
+              <h1>KeepSake<span>.</span></h1>
+            </div>
             <div class="header-subtext">
               <p>for memories worth keeping</p>
             </div>

@@ -1,8 +1,10 @@
 import mood from "./js/mood.js";
 
+const appContainer = document.getElementById("container");
 const importBtn = document.getElementById("import");
 const main = document.querySelector("main");
 const reset = document.getElementById("reset");
+const closeMemory = document.getElementById("closeMemory");
 
 importBtn.addEventListener("click", () => {
   inputModal.classList.toggle("active");
@@ -12,6 +14,17 @@ importBtn.addEventListener("click", () => {
 const memoryForm = document.getElementById("inputForm");
 const memoryContainer = document.getElementById("memoryContainer");
 
+const moodInputs = document.querySelectorAll(".inputTag");
+const moodInput = document.getElementById("moodInput");
+moodInputs.forEach((mood) => {
+  mood.addEventListener("click", () => {
+    moodInputs.forEach((e) => e.classList.remove("moodActive"));
+    console.log(mood.dataset.mood);
+    mood.classList.add("moodActive");
+    moodInput.value = mood.dataset.mood;
+  });
+});
+
 memoryForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const memoryData = new FormData(memoryForm);
@@ -20,7 +33,7 @@ memoryForm.addEventListener("submit", (e) => {
     id: crypto.randomUUID(),
     title: memoryData.get("title").trim(),
     date: memoryData.get("date"),
-    mood: memoryData.get("mood"),
+    mood: memoryData.get("moodInput"),
     journal: memoryData.get("memory"),
     image: image instanceof File && image.size > 0 ? image : null,
   };
@@ -90,6 +103,7 @@ function createMemoryCard(data) {
 
     memoryCard.innerHTML = `
         <div class="memory-header">
+          <div class="mood">${memory.mood}</div>
           <div class="date">${memory.date}</div>
         </div>
         <div class="memory-content">
@@ -99,10 +113,31 @@ function createMemoryCard(data) {
         </div>
         </div>
     `;
+    memoryCard.addEventListener("click", () => {
+      const memoryModal = document.getElementById("memoryModal");
+      memoryModal.classList.add("active");
+      appContainer.classList.add("secondary");
+      memoryModal.querySelector(".memoryModalMain").innerHTML = `
+      <div class="memory-header">
+          <div class="mood">${memory.mood}</div>
+          <div class="date">${memory.date}</div>
+        </div>
+        <div class="memory-content">
+          <h3>${memory.title}</h3>
+          <p>${memory.journal}</p>
+        <div class="memory-image">
+          <img src=${memoryImageSrc} alt=${memoryImageAlt}>
+        </div>
+        </div>
+        `;
+    });
     memoryContainer.appendChild(memoryCard);
   });
 }
-
+closeMemory.addEventListener("click", () => {
+  memoryModal.classList.remove("active");
+  appContainer.classList.add("secondary");
+});
 reset.addEventListener("click", () => {
   const request = indexedDB.deleteDatabase("keptDB");
   request.onsuccess = () => {

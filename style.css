@@ -36,6 +36,7 @@
   color: var(--color);
   font-family: var(--font-text);
 }
+
 h1,
 h2,
 h3,
@@ -56,7 +57,11 @@ a {
   margin-top: 1rem;
   padding: 2rem;
 }
-
+.btn{
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-secondary);
+    background: transparent;
+}
 /* header */
 header {
   width: 100%;
@@ -149,7 +154,7 @@ section.memories {
   padding: 2rem 0;
 }
 .memory-card {
-  width: 30%;
+  width: 40%;
   margin: 1rem 0;
   background: var(--surface);
   border: 1px solid var(--divider);
@@ -160,7 +165,8 @@ section.memories {
 .memory-card .memory-header {
   margin-bottom: 1rem;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
 }
 .memory-header .date {
   font-size: 0.85rem;
@@ -175,8 +181,13 @@ section.memories {
   box-shadow: var(--shadow-hover);
 }
 .memory-image {
-  border-radius: 1rem;
   overflow: hidden;
+  width: 100%;
+  max-height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
 }
 .memory-image img {
   width: 100%;
@@ -185,4 +196,30 @@ section.memories {
 }
 .memory-card:hover .memory-image img {
   transform: scale(1.1);
+}
+
+/* memoryModal */
+.memory-modal {
+  transform: scale(0);
+  overflow: hidden;
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 50%;
+  height: 80vh;
+  border: 1px solid var(--muted);
+  box-shadow: 2px 2px 4px var(--muted);
+  background: var(--background);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+.memory-modal.active {
+  transform: scale(1) translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
