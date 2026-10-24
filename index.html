@@ -7,12 +7,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="mood-tray">
+      <div class="mood-items">
+        <div class="mood" data-name="angry" id="moodangey">angry</div>
+        <div class="mood" data-name="happy" id="moodhappy">happy</div>
+        <div class="mood" data-name="sad" id="moodsad">sad</div>
+        <div class="mood" data-name="excited" id="moodexcited">excited</div>
+      </div>
+    </div>
+
     <div class="input-modal" id="inputModal">
       <form class="input-form" id="inputForm">
         <div class="form-div">
           <div class="form-component">
             <label for="title">Memory Title</label>
-            <input type="text" name="title" placeholder="Enter Memory Title..." />
+            <input
+              type="text"
+              name="title"
+              placeholder="Enter Memory Title..."
+            />
           </div>
           <div class="form-component">
             <label for="date">Date Recorded</label>
@@ -65,11 +78,11 @@
           <div class="filter-wrapper">
             <p>Filter</p>
             <div class="tags-wrapper">
-              <div class="tag">All</div>
-              <div class="tag">Happy</div>
-              <div class="tag">Angry</div>
-              <div class="tag">Sad</div>
-              <div class="tag">Excited</div>
+              <div class="tag" id="">All</div>
+              <div class="tag" id="happy">Happy</div>
+              <div class="tag" id="angry">Angry</div>
+              <div class="tag" id="sad">Sad</div>
+              <div class="tag" id="excited">Excited</div>
             </div>
           </div>
           <div class="memories-wrapper" id="memoryContainer"></div>

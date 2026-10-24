@@ -1,3 +1,5 @@
+import mood from "./js/mood.js";
+
 const importBtn = document.getElementById("import");
 const main = document.querySelector("main");
 const reset = document.getElementById("reset");
@@ -84,6 +86,7 @@ function createMemoryCard(data) {
     memoryCard.classList.add("memory-card");
 
     const memoryImage = document.createElement("img");
+    memoryImage.classList.add("memory-image");
     memoryImage.src = URL.createObjectURL(memory.image);
     memoryImage.alt = memory.title;
 
@@ -110,3 +113,5 @@ reset.addEventListener("click", () => {
   };
   memoryContainer.innerHTML = "";
 });
+
+mood();

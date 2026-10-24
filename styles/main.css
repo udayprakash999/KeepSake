@@ -66,3 +66,16 @@
   height: auto;
   aspect-ratio: 1;
 }
+.mood-tray{
+  background: #937272;
+  
+}
+.mood-items{
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+}
+.mood{
+  background: #084736;
+  padding: 1rem;
+}
