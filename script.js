@@ -20,6 +20,7 @@ memoryForm.addEventListener("submit", (e) => {
     id: crypto.randomUUID(),
     title: memoryData.get("title").trim(),
     date: memoryData.get("date"),
+    mood: memoryData.get("mood"),
     journal: memoryData.get("memory"),
     image: image instanceof File && image.size > 0 ? image : null,
   };
@@ -84,21 +85,20 @@ function createMemoryCard(data) {
   data.forEach((memory) => {
     const memoryCard = document.createElement("div");
     memoryCard.classList.add("memory-card");
-
-    const memoryImage = document.createElement("img");
-    memoryImage.classList.add("memory-image");
-    memoryImage.src = URL.createObjectURL(memory.image);
-    memoryImage.alt = memory.title;
+    const memoryImageSrc = URL.createObjectURL(memory.image);
+    const memoryImageAlt = memory.title;
 
     memoryCard.innerHTML = `
         <div class="memory-header">
-        <div class="date">${memory.date}</div>
+          <div class="date">${memory.date}</div>
         </div>
         <div class="memory-content">
-        <h3>${memory.title}</h3>
+          <h3>${memory.title}</h3>
+        <div class="memory-image">
+          <img src=${memoryImageSrc} alt=${memoryImageAlt}>
+        </div>
         </div>
     `;
-    memoryCard.appendChild(memoryImage);
     memoryContainer.appendChild(memoryCard);
   });
 }

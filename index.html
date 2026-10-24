@@ -7,87 +7,93 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mood-tray">
-      <div class="mood-items">
-        <div class="mood" data-name="angry" id="moodangey">angry</div>
-        <div class="mood" data-name="happy" id="moodhappy">happy</div>
-        <div class="mood" data-name="sad" id="moodsad">sad</div>
-        <div class="mood" data-name="excited" id="moodexcited">excited</div>
+    <div id="container">
+      <div class="mood-tray">
+        <div class="mood-items">
+          <div class="mood" data-name="angry" id="moodangey">angry</div>
+          <div class="mood" data-name="happy" id="moodhappy">happy</div>
+          <div class="mood" data-name="sad" id="moodsad">sad</div>
+          <div class="mood" data-name="excited" id="moodexcited">excited</div>
+        </div>
       </div>
-    </div>
-
-    <div class="input-modal" id="inputModal">
-      <form class="input-form" id="inputForm">
-        <div class="form-div">
-          <div class="form-component">
-            <label for="title">Memory Title</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter Memory Title..."
-            />
-          </div>
-          <div class="form-component">
-            <label for="date">Date Recorded</label>
-            <input type="date" name="date" id="date" />
-          </div>
-        </div>
-        <div class="form-div">
-          <div class="mood-tags">
-            <div class="tag">Happy</div>
-            <div class="tag">Angry</div>
-            <div class="tag">Sad</div>
-            <div class="tag">Excited</div>
-          </div>
-        </div>
-        <div class="form-div">
-          <div class="form-component">
-            <label for="memory">Your Thoughts</label>
-            <textarea name="memory" id="memoryInput" rows="5"></textarea>
-          </div>
-        </div>
-        <div class="form-div">
-          <div class="form-component">
-            <label for="image">Image</label>
-            <input type="file" id="inputImage" name="image" accept="image/*" />
-          </div>
-        </div>
-        <button class="formBtn btn" type="submit">Submit</button>
-      </form>
-    </div>
-    <div class="app">
-      <header>
-        <div class="header-heading">
-          <div id="logo" class="logo"><h1>KeepSake</h1></div>
-          <div class="header-subtext">
-            <p>for memories worth keeping</p>
-          </div>
-        </div>
-        <div class="header-actions">
-          <button class="btn input-btn" id="import">Add New</button>
-          <button class="btn reset-btn" id="reset">Reset</button>
-        </div>
-      </header>
-      <main>
-        <section class="hero"></section>
-        <section class="memories">
-          <div class="section-heading">
-            <h3>Your Memories</h3>
-            <p class="index" id="memoryIndex">2 Memories</p>
-          </div>
-          <div class="filter-wrapper">
-            <p>Filter</p>
-            <div class="tags-wrapper">
-              <div class="tag" id="">All</div>
-              <div class="tag" id="happy">Happy</div>
-              <div class="tag" id="angry">Angry</div>
-              <div class="tag" id="sad">Sad</div>
-              <div class="tag" id="excited">Excited</div>
+      <div class="input-modal" id="inputModal">
+        <form class="input-form" id="inputForm">
+          <div class="form-div">
+            <div class="form-component">
+              <label for="title">Memory Title</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter Memory Title..."
+              />
+            </div>
+            <div class="form-component">
+              <label for="date">Date Recorded</label>
+              <input type="date" name="date" id="date" />
             </div>
           </div>
-          <div class="memories-wrapper" id="memoryContainer"></div>
-        </section>
-      </main>
+          <div class="form-div">
+            <div class="tags-wrapper">
+              <div class="tag">Happy</div>
+              <div class="tag">Angry</div>
+              <div class="tag">Sad</div>
+              <div class="tag">Excited</div>
+            </div>
+          </div>
+          <div class="form-div">
+            <div class="form-component">
+              <label for="memory">Your Thoughts</label>
+              <textarea name="memory" id="memoryInput" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="form-div">
+            <div class="form-component">
+              <label for="image">Image</label>
+              <input
+                type="file"
+                id="inputImage"
+                name="image"
+                accept="image/*"
+              />
+            </div>
+          </div>
+          <button class="formBtn btn" type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="app">
+        <header>
+          <div class="header-heading">
+            <div id="logo" class="logo"><h1>KeepSake<span>.</span></h1></div>
+            <div class="header-subtext">
+              <p>for memories worth keeping</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="btn input-btn" id="import">Add New</button>
+            <button class="btn reset-btn" id="reset">Reset</button>
+          </div>
+        </header>
+        <main>
+          <section class="hero"></section>
+          <section class="memories">
+            <div class="section-heading">
+              <h3>Your Memories</h3>
+              <p class="index" id="memoryIndex">2 Memories</p>
+            </div>
+            <div class="filter-wrapper">
+              <p>Filter</p>
+              <div class="tags-wrapper">
+                <div class="tag" id="">All</div>
+                <div class="tag" id="happy">Happy</div>
+                <div class="tag" id="angry">Angry</div>
+                <div class="tag" id="sad">Sad</div>
+                <div class="tag" id="excited">Excited</div>
+              </div>
+            </div>
+            <div class="memories-wrapper" id="memoryContainer"></div>
+          </section>
+        </main>
+      </div>
     </div>
     <script type="module" src="script.js"></script>
   </body>
