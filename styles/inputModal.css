@@ -1,15 +1,14 @@
 /* Input Modal */
 .input-modal {
   transform: scale(0);
-  overflow: hidden;
   position: fixed;
   top: -100%;
   left: -100%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 50%;
-  height: 80vh;
+  width: 70%;
+  height: 90vh;
   border: 1px solid var(--muted);
   box-shadow: 2px 2px 4px var(--muted);
   background: var(--background);
@@ -17,6 +16,10 @@
   padding: 1rem 2rem;
   z-index: 100;
   transition: all 0.5s ease;
+  overflow: auto;
+}
+.input-modal::-webkit-scrollbar {
+  width: 0;
 }
 .input-modal.active {
   transform: scale(1) translate(-50%, -50%);
@@ -27,7 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 .form-div {
   width: 100%;
@@ -52,14 +55,18 @@
 }
 .form-component input,
 .form-component textarea {
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   outline: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border: 1px solid var(--divider);
   box-shadow: var(--shadow);
   border-radius: 0.5rem;
 }
-.moodActive{
+.form-component input[type="file"] {
+  padding: 1rem 2rem;
+  min-height: 180px;
+}
+.moodActive {
   background: var(--highlight);
 }
 form button {
@@ -67,3 +74,64 @@ form button {
   border: none;
   border-radius: 0.25rem;
 }
+
+/* memoryModal */
+.memory-modal {
+  transform: scale(0);
+  overflow: auto;
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 50%;
+  height: 80vh;
+  border: 1px solid var(--muted);
+  box-shadow: 2px 2px 4px var(--muted);
+  background: var(--background);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+.memoryModalHeader{
+  display: flex;
+  justify-content: flex-end;
+}
+.memory-modal.active {
+  transform: scale(1) translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+.memory-modal::-webkit-scrollbar {
+  width: 0;
+}
+.memory-modal img {
+  max-height: 280px;
+  width: auto;
+}
+.memory-header {
+  display: flex;
+  text-transform: capitalize;
+  justify-content: space-between;
+  align-items: center;
+}
+.memory-content h3 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  text-transform: capitalize;
+}
+.memory-content p{
+  font-size: 1.25rem;
+}
+.memory-image{
+  margin-top: 2rem;
+}
+.close-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.25rem;
+  text-align: right;
+}
+

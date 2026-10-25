@@ -1,25 +1,38 @@
-header{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 2rem 1rem;
+header {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--divider);
 }
-.header-heading{
-    width: 50%;
+.header-heading {
+  display: flex;
+  flex-direction: column;
 }
-.header-heading .logo{
-    font-size: 1.5rem;
+.header-heading .logo {
+  font-size: 2rem;
+  letter-spacing: -0.025em;
 }
-.header-heading .header-subtext p{
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
+.logo span {
+  font-weight: 400;
+  color: var(--highlight);
 }
-.header-actions{
-    width: 35%;
-    gap: 0.5rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+.header-heading .header-subtext {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-style: italic;
 }
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.header-actions .btn {
+  padding: 0.5rem 1.25rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-hover);
+  border-radius: 1rem;
+  background: transparent;
+  text-transform: uppercase;
+}
+

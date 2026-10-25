@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Lora:wght@400;500;600&family=Nunito:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -7,156 +6,50 @@
   text-decoration: none;
 }
 :root {
-  --angry-bg: #2b1015;
-  --happy-bg: #fff8e7;
-  --sad-bg: #111d35;
-  --excited-bg: #251044;
-
-  --angry-color-h: #ff5c65;
-  --happy-color-h: #d97706;
-  --sad-color-h: #93c5fd;
-  --excited-color-h: #f0abfc;
-
-  --angry-color-p: #f4dcdd;
-  --happy-color-p: #654f2c;
-  --sad-color-p: #d5deed;
-  --excited-color-p: #e9d5ff;
-
-  --angry-btn: #e63946;
-  --happy-btn: #f5b82e;
-  --sad-btn: #3b82f6;
-  --excited-btn: #c084fc;
-
-  --angry-btn-color: #ffffff;
-  --happy-btn-color: #352300;
-  --sad-btn-color: #ffffff;
-  --excited-btn-color: #2e1065;
-
-  --accent: #e0745e;
-  --highlight: #f4b13b;
-  --muted: rgba(15, 61, 58, 0.3);
-
-  --angry-font: 'Oswald', sans-serif;
-  --happy-font: 'Nunito', sans-serif;
-  --sad-font: 'Lora', serif;
-  --excited-font: 'Bungee', cursive;
-
-  --heading-color: #000000;
-  --p-color: #000000;
-  --background: #ffffff;
-  --btn: transparent;
-  --btn-color: #000000;
-  --font: var(--happy-font);
+  --background: #e8ddc8;
+  --surface: #f3ebdd;
+  --color: #594638;
+  --paper: #f7f0e3;
+  --accent: #a65f4b;
+  --accent-hover: #8d4c32;
+  --muted: #a39480;
+  --highlight: #c49a62;
+  --font-display: "Lora", serif;
+  --font-text: "Nunito", sans-serif;
+  --divider: rgba(73, 57, 47, 0.2);
+  --shadow: 0 4px 16px rgba(73, 57, 47, 0.08);
+  --shadow-hover: 0 8px 24px rgba(73, 57, 47, 0.14);
 }
 
-body {
-  background-color: var(--background);
+#container {
   width: 100%;
   height: 100%;
-  font-family: var(--font);
+  padding: 2rem 0;
+  background-color: var(--background);
+  color: var(--color);
+  font-family: var(--font-text);
 }
-.app-background {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  opacity: 0.15;
-  background-image: url("https://images.unsplash.com/photo-1602475063211-3d98d60e3b1f?q=80&w=1257&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D");
-}
-.app {
-  position: relative;
-  z-index: 2;
-}
+
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-  color: var(--heading-color);
-}
-p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  color: var(--p-color);
-}
-.btn {
-  background: var(--btn);
-  padding: 0.5rem 0.75rem;
-  outline: none;
-  border-radius: 10px;
-  border: 1px solid var(--color);
-  color: var(--btn-color);
-  font-weight: 500;
-  position: relative;
-  overflow: hidden;
-  transition: all ease 0.5s;
-}
-.btn span {
-  position: relative;
-  z-index: 10;
-}
-.btn::before {
-  content: "";
-  width: 100%;
-  height: 10%;
-  position: absolute;
-  left: 0;
-  z-index: 5;
-  bottom: -100%;
-  transition: all ease 0.9s;
-  background-color: var(--color);
-  color: var(--background);
-}
-.btn:hover::before {
-  bottom: 0;
-  transform: rotate(180deg);
-}
-.btn:hover {
-  font-weight: bold;
-  border: 1px solid var(--background);
-}
-.app {
-  width: 75%;
-  height: 100%;
-  margin: auto;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  border: 1px solid rgba(15, 61, 58, 0.3);
-  box-shadow: 2px 2px 4px rgba(15, 61, 58, 0.3);
-  border-radius: 2rem;
-}
-body.angry {
-  --background: var(--angry-bg);
-  --heading-color: var(--angry-color-h);
-  --p-color: var(--angry-color-p);
-  --btn: var(--angry-btn);
-  --btn-color: var(--angry-btn-color);
-  --font:var(--angry-font);
+a {
+  font-family: var(--font-display);
 }
 
-body.happy {
-  --background: var(--happy-bg);
-  --heading-color: var(--happy-color-h);
-  --p-color: var(--happy-color-p);
-  --btn: var(--happy-btn);
-  --btn-color: var(--happy-btn-color);
-  --font:var(--happy-font);
+.app {
+  width: 60%;
+  min-height: 100vh;
+  height: 100%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 2rem;
 }
-body.sad {
-  --background: var(--sad-bg);
-  --heading-color: var(--sad-color-h);
-  --p-color: var(--sad-color-p);
-  --btn: var(--sad-btn);
-  --btn-color: var(--sad-btn-color);
-  --font:var(--sad-font);
+.app.secondary{
+  filter: blur(10px);
 }
-body.excited {
-  --background: var(--excited-bg);
-  --heading-color: var(--excited-color-h);
-  --p-color: var(--excited-color-p);
-  --btn: var(--excited-btn);
-  --btn-color: var(--excited-btn-color);
-  --font:var(--excited-font);
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-secondary);
+  background: transparent;
 }

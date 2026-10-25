@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KeepSake - For memories worth keeping</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./assets/fav.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
+    />
   </head>
   <body>
     <div id="container">
-      <div class="mood-tray">
-        <div class="mood-items">
-          <div class="mood" data-name="angry" id="moodangey">angry</div>
-          <div class="mood" data-name="happy" id="moodhappy">happy</div>
-          <div class="mood" data-name="sad" id="moodsad">sad</div>
-          <div class="mood" data-name="excited" id="moodexcited">excited</div>
-        </div>
-      </div>
       <div class="memory-modal" id="memoryModal">
         <div class="memoryModalHeader">
           <button class="btn close-btn" id="closeMemory">X</button>
@@ -23,6 +20,7 @@
         <div class="memoryModalMain"></div>
       </div>
       <div class="input-modal" id="inputModal">
+        <button class="btn close-btn" id="closeInput">X</button>
         <div class="form-headeing">
           <h3>New Memory</h3>
           <p>Have a memory want to keep?</p>
@@ -44,6 +42,7 @@
             </div>
           </div>
           <div class="form-div">
+            <label for="mood">Mood :</label>
             <div class="tags-wrapper">
               <div class="tag inputTag" data-mood="happy">Happy</div>
               <div class="tag inputTag" data-mood="angry">Angry</div>
@@ -100,17 +99,9 @@
           <section class="memories">
             <div class="section-heading">
               <h3>Your Memories</h3>
-              <p class="index" id="memoryIndex">2 Memories</p>
-            </div>
-            <div class="filter-wrapper">
-              <p>Filter</p>
-              <div class="tags-wrapper">
-                <div class="tag" id="">All</div>
-                <div class="tag" id="happy">Happy</div>
-                <div class="tag" id="angry">Angry</div>
-                <div class="tag" id="sad">Sad</div>
-                <div class="tag" id="excited">Excited</div>
-              </div>
+              <p class="index" id="memoryIndex">
+                <span id="idx">0</span> Memories
+              </p>
             </div>
             <div class="memories-wrapper" id="memoryContainer"></div>
           </section>

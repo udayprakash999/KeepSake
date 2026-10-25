@@ -1,21 +1,16 @@
-import mood from "./js/mood.js";
-
 const appContainer = document.getElementById("container");
 const importBtn = document.getElementById("import");
-const main = document.querySelector("main");
+const mainApp = document.querySelector(".app");
 const reset = document.getElementById("reset");
 const closeMemory = document.getElementById("closeMemory");
-
-importBtn.addEventListener("click", () => {
-  inputModal.classList.toggle("active");
-  main.classList.toggle("secondary");
-});
-
+const closeInput = document.getElementById("closeInput");
+const memoryIdx = document.getElementById("idx");
 const memoryForm = document.getElementById("inputForm");
 const memoryContainer = document.getElementById("memoryContainer");
-
+const inputModal = document.getElementById("inputModal")
 const moodInputs = document.querySelectorAll(".inputTag");
 const moodInput = document.getElementById("moodInput");
+
 moodInputs.forEach((mood) => {
   mood.addEventListener("click", () => {
     moodInputs.forEach((e) => e.classList.remove("moodActive"));
@@ -40,7 +35,8 @@ memoryForm.addEventListener("submit", (e) => {
   saveData(entry);
   memoryForm.reset();
   getData();
-  inputModal.remove("active");
+  inputModal.classList.remove("active");
+  mainApp.classList.remove("secondary")
 });
 
 let keptData;
@@ -86,13 +82,21 @@ function loadData() {
 async function getData() {
   try {
     const entries = await loadData();
-    console.log(entries);
+    memoryIdx.innerHTML = `${entries.length}`;
     createMemoryCard(entries);
   } catch (error) {
     console.error("Error : ", error);
   }
 }
-
+async function getDataId(id) {
+  return new Promise((resolve, reject) => {
+    const transaction = keptData.transaction("entries", "readonly");
+    const store = transaction.objectStore("entries");
+    const request = store.get(id);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => resolve(request.error);
+  });
+}
 function createMemoryCard(data) {
   memoryContainer.innerHTML = "";
   data.forEach((memory) => {
@@ -100,7 +104,7 @@ function createMemoryCard(data) {
     memoryCard.classList.add("memory-card");
     const memoryImageSrc = URL.createObjectURL(memory.image);
     const memoryImageAlt = memory.title;
-
+    const Id = memory.id;
     memoryCard.innerHTML = `
         <div class="memory-header">
           <div class="mood">${memory.mood}</div>
@@ -113,11 +117,22 @@ function createMemoryCard(data) {
         </div>
         </div>
     `;
-    memoryCard.addEventListener("click", () => {
-      const memoryModal = document.getElementById("memoryModal");
-      memoryModal.classList.add("active");
-      appContainer.classList.add("secondary");
-      memoryModal.querySelector(".memoryModalMain").innerHTML = `
+    memoryCard.addEventListener("click", async () => {
+      createMemoryModal(Id);
+    });
+    memoryContainer.appendChild(memoryCard);
+  });
+}
+async function createMemoryModal(id) {
+  const memory = await getDataId(id);
+  const memoryModal = document.getElementById("memoryModal");
+  const memoryImageSrc = URL.createObjectURL(memory.image);
+  const memoryImageAlt = memory.title;
+
+  memoryModal.classList.add("active");
+  mainApp.classList.add("secondary");
+
+  memoryModal.querySelector(".memoryModalMain").innerHTML = `
       <div class="memory-header">
           <div class="mood">${memory.mood}</div>
           <div class="date">${memory.date}</div>
@@ -130,13 +145,19 @@ function createMemoryCard(data) {
         </div>
         </div>
         `;
-    });
-    memoryContainer.appendChild(memoryCard);
-  });
 }
+
+importBtn.addEventListener("click", () => {
+  inputModal.classList.add("active");
+  mainApp.classList.add("secondary");
+});
 closeMemory.addEventListener("click", () => {
   memoryModal.classList.remove("active");
-  appContainer.classList.add("secondary");
+  mainApp.classList.remove("secondary");
+});
+closeInput.addEventListener("click", () => {
+  inputModal.classList.remove("active");
+  mainApp.classList.remove("secondary");
 });
 reset.addEventListener("click", () => {
   const request = indexedDB.deleteDatabase("keptDB");
@@ -148,5 +169,3 @@ reset.addEventListener("click", () => {
   };
   memoryContainer.innerHTML = "";
 });
-
-mood();
